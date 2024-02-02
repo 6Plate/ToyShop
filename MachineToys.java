@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class MachineToys {
@@ -51,43 +54,61 @@ getById(id).setWeight(weight);
 
 public int getCountToys(){
 int countToys = 0;
-for (Toy toy: listToys){
-countToys++;
+for (int i = 0; i < listToys.size(); i++){
+    countToys++;
 }
 return countToys;
 }
 
 
-public Toy randGiveToy(){
-    List <Double> prob = new ArrayList<>();
-    for (Toy toy:listToys){
-    prob.add(createDouble(toy.getWeight()));
-    }
+public void randGiveToy(){
+List<String> names = Arrays.asList();
+String[] nameArray = names.toArray(new String[0]);
+List <Integer> prob = new ArrayList<>();
+for (Toy toy: listToys){
+    prob.add(toy.getWeight());
+}
+
 Random rand = new Random();
 Double number = rand.nextDouble();
-int index = 0;
-for (int i = 0; i < prob.size(); i++)
+int Index = 0;
+for (int i = 0; i < arr.length; i++)
 {
-if (number <= prob.get(i))
+if (number <= arr[i])
 {
-index = i;
+Index = i; 
 break;
 }
-else{
-prob.get(i+1) += prob.get(i);
-
+arr[i + 1] += arr[i];
 }
-}
-}
-
-public Double createDouble(int i){
-double r = i;
-double f = r / 100; 
-return f;
+System.out.println(nameArray.toString());
+System.out.println(Index);
 }
 
-
-
-
-    
+@Override
+ public String toString() {
+     return getInfoToys();
 }
+
+public String getInfoToys(){
+    StringBuilder sb = new StringBuilder();
+    sb.append("All toys: ");
+    for (Toy toy: listToys){
+    sb.append("\n");
+    sb.append(toy.getInfo());
+    }
+    return sb.toString();
+}
+
+}
+
+// public Toy checkList (int index){
+// for(Toy toy:listToys){
+// if (toy.getWeight() == index){
+//     return toy;
+// }
+// }
+// } 
+
+
+
