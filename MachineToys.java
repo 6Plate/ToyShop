@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class MachineToys {
 
@@ -62,29 +63,38 @@ return countToys;
 
 
 public void randGiveToy(){
-List<String> names = Arrays.asList();
-String[] nameArray = names.toArray(new String[0]);
+List<String> names = new ArrayList<>();
+for (Toy toy: listToys){
+    names.add(toy.getName());
+}
+String[] namesArray = new String[names.size()];
+for (int i = 0; i < names.size(); i++) {
+            namesArray[i] = names.get(i);
+}
 List <Integer> prob = new ArrayList<>();
 for (Toy toy: listToys){
     prob.add(toy.getWeight());
 }
+int [] chance = prob.stream().mapToInt(i -> i).toArray();
+int count = IntStream.of(chance).sum(); // Считаем количество элементов воображаемого массива
+// Вывод вероятностей:
+for (int i = 0; i < chance.length; i++) {
+System.out.println("Prob number \"" + namesArray[i] + "\":  \t" + (chance[i]*100d/count) + "%");
+        }
+        // Генерация случайного числа
+    Random random = new Random();
+        for (int randomNumsCount = 0; randomNumsCount < 10; randomNumsCount++) {
+            int index = random.nextInt(count); // Выбираем случайный индекс из воображаемого массива
+            for (int i = 0; i < chance.length; i++) { // Ищем элемент, которому принадлежит этот индекс
+                index -= chance[i];
+                if(index < 0) {
+                    System.out.println("Random number: " + namesArray[i]);
+                    break;
+            }
+     }
 
-Random rand = new Random();
-Double number = rand.nextDouble();
-int Index = 0;
-for (int i = 0; i < arr.length; i++)
-{
-if (number <= arr[i])
-{
-Index = i; 
-break;
 }
-arr[i + 1] += arr[i];
 }
-System.out.println(nameArray.toString());
-System.out.println(Index);
-}
-
 @Override
  public String toString() {
      return getInfoToys();
@@ -99,16 +109,6 @@ public String getInfoToys(){
     }
     return sb.toString();
 }
-
 }
-
-// public Toy checkList (int index){
-// for(Toy toy:listToys){
-// if (toy.getWeight() == index){
-//     return toy;
-// }
-// }
-// } 
-
 
 
