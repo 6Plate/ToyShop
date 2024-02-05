@@ -1,11 +1,14 @@
-public class Toy {
+package Toys;
+import java.io.Serializable;
+
+public class Toy implements Serializable {
     
     private long id;
     private String name;
     private int weight;
 
     
-    public Toy(String name, int weight){
+    public Toy (String name, int weight){
     id = -1;
     this.name = name;
     this.weight = weight;

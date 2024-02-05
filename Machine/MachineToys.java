@@ -1,10 +1,11 @@
+package Machine;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.stream.IntStream;
+
+import File.FileHandler;
+import Toys.Toy;
 
 public class MachineToys {
 
@@ -77,23 +78,25 @@ for (Toy toy: listToys){
 }
 int [] chance = prob.stream().mapToInt(i -> i).toArray();
 int count = IntStream.of(chance).sum(); // Считаем количество элементов воображаемого массива
-// Вывод вероятностей:
-for (int i = 0; i < chance.length; i++) {
-System.out.println("Prob number \"" + namesArray[i] + "\":  \t" + (chance[i]*100d/count) + "%");
-        }
-        // Генерация случайного числа
-    Random random = new Random();
-        for (int randomNumsCount = 0; randomNumsCount < 10; randomNumsCount++) {
-            int index = random.nextInt(count); // Выбираем случайный индекс из воображаемого массива
-            for (int i = 0; i < chance.length; i++) { // Ищем элемент, которому принадлежит этот индекс
-                index -= chance[i];
-                if(index < 0) {
-                    System.out.println("Random number: " + namesArray[i]);
-                    break;
-            }
+Random random = new Random();
+int index = random.nextInt(count);
+    for (int i = 0; i < chance.length; i++) { // Ищем элемент, которому принадлежит этот индекс
+            index -= chance[i];
+            if(index < 0) {
+            System.out.println(namesArray[i]);
+            saveGive(namesArray[i]);
+            break;
+              }
      }
-
 }
+
+public void saveGive(String name){
+FileHandler file = new FileHandler();
+    for (Toy toy: listToys){
+        if (toy.getName().equals(name)){
+            file.save(toy.getInfo(),"FileToys");
+        }
+    }
 }
 @Override
  public String toString() {
