@@ -9,10 +9,10 @@ public class GetToyListInfo extends Command {
 
 
     public GetToyListInfo(View view){
-        super("Добавить человека", view);
+        super("Display a list of toys", view);
     }
     
     public void execute(){
-    getView().getToyListInfo();
+    System.out.println(getView().getToyListInfo());
     }
 }

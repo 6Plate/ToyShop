@@ -9,7 +9,7 @@ public class Finish extends Command {
 
 
    public Finish(View view){
-       super("Закончить работу", view);
+       super("Finish programm", view);
    }
    
    public void execute(){

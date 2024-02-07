@@ -21,7 +21,7 @@ public ConsoleUI(){
     
     @Override
     public void start() {
-    System.out.println("Приветсвую!");
+    System.out.println("List of commands: ");
     while (work) {
     printMenu();
     scanMenu();
@@ -34,9 +34,9 @@ public ConsoleUI(){
         
         }
     public void addToy(){
-        System.out.println("Укажите имя человека");
+        System.out.println("Indicate the name of the toy: ");
         String name = scanner.nextLine();
-        System.out.println("Укажите год рождения:");
+        System.out.println("indicate the weight of the toy:");
         String weightStr = scanner.nextLine();
         int weight = Integer.parseInt(weightStr);
         presenter.addToy(name, weight);
@@ -62,12 +62,12 @@ public ConsoleUI(){
     }
 
     public void finish(){
-        System.out.println("До новых встреч!");
+        System.out.println("See you soon!");
         work = false;
     }
 
     public void error(){
-        System.out.println("Вы указали неверное значение");
+        System.out.println("Something went wrong");
     }
     
     private void printMenu(){
@@ -77,7 +77,7 @@ public ConsoleUI(){
     @Override
     public void answer(String answer) {System.out.println(answer);}
 
-    // @Override
-    // public String toString() {return getHumanListInfo();}
+    @Override
+    public String toString() {return getToyListInfo();}
 }
 

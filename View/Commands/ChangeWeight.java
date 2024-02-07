@@ -9,7 +9,7 @@ public class ChangeWeight extends Command {
 
 
     public ChangeWeight (View view){
-        super("Добавить человека", view);
+        super("Change weight of toy", view);
     }
     
     public void execute(){

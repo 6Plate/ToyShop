@@ -29,7 +29,7 @@ public class Service {
     
     public String getToyInfo(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Дерево:");
+        sb.append("List of toys:");
         for (Toy toy: machine){
         sb.append("\n");
         sb.append(toy);

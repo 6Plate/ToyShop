@@ -1,9 +1,18 @@
 import Model.Machine.MachineToys;
 import Model.Toy.Toy;
 import Service.Service;
+import View.ConsoleUI;
 
 public class Main {
  public static void main(String[] args) {
+    ConsoleUI console = new ConsoleUI();
+    console.start();    
+    // Service service = new Service();
+    // service.addItem("Bear", 10);
+    // service.addItem("Rihno", 15);
+    // service.addItem("Tiger", 13);
+    // service.randGiveToy("FileToy");
+    // System.out.println( service.getToyInfo());
 // Toy toy1 = new Toy("Bear", 10);
 // Toy toy2 = new Toy("Chicken", 2);
 // Toy toy3 = new Toy("Fox", 6);
@@ -19,11 +28,11 @@ public class Main {
 // automat.addToys(toy4);
 
 // automat.randGiveToy();
-Service service = new Service();
-service.addItem("Fox", 5);
-service.addItem("Bear", 10);
-service.addItem("Robot", 15);
-service.randGiveToy();
+// Service service = new Service();
+// service.addItem("Fox", 5);
+// service.addItem("Bear", 10);
+// service.addItem("Robot", 15);
+// service.randGiveToy();
 
         // String [] name = new String [] {"Bear", "Bunny",  "Dragon", "Fox", "Tiger", "Robot"}; // Числа
         // int[] chance = new int[] {350, 200, 2000, 250, 300, 270}; // Количество

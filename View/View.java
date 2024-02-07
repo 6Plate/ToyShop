@@ -6,7 +6,7 @@ public interface View {
     void answer(String answer);
     void addToy();
     String getToyListInfo();
-    void randGiveToy(String path);
-    void changeWeight(int id, int weight);
+    void randGiveToy();
+    void changeWeight();
     void finish();
     }

@@ -9,7 +9,7 @@ public class RandToy extends Command {
 
 
     public RandToy(View view){
-        super("Добавить человека", view);
+        super("Toy raffle", view);
     }
     
     public void execute(){
