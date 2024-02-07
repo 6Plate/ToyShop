@@ -1,13 +1,14 @@
-package Machine;
+package Model.Machine;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import File.FileHandler;
-import Toys.Toy;
+import Model.File.FileHandler;
+import Model.Toy.Toy;
 
-public class MachineToys {
+public class MachineToys implements Iterable <Toy> {
 
 public List<Toy> listToys;
 public long toysId;
@@ -63,7 +64,7 @@ return countToys;
 }
 
 
-public void randGiveToy(){
+public void randGiveToy(String path){
 List<String> names = new ArrayList<>();
 for (Toy toy: listToys){
     names.add(toy.getName());
@@ -77,24 +78,24 @@ for (Toy toy: listToys){
     prob.add(toy.getWeight());
 }
 int [] chance = prob.stream().mapToInt(i -> i).toArray();
-int count = IntStream.of(chance).sum(); // Ñ÷èòàåì êîëè÷åñòâî ıëåìåíòîâ âîîáğàæàåìîãî ìàññèâà
+int count = IntStream.of(chance).sum(); // ˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜
 Random random = new Random();
 int index = random.nextInt(count);
-    for (int i = 0; i < chance.length; i++) { // Èùåì ıëåìåíò, êîòîğîìó ïğèíàäëåæèò ıòîò èíäåêñ
+    for (int i = 0; i < chance.length; i++) { // ˜˜˜˜ ˜˜˜˜˜˜˜, ˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜˜˜˜ ˜˜˜˜ ˜˜˜˜˜˜
             index -= chance[i];
             if(index < 0) {
             System.out.println(namesArray[i]);
-            saveGive(namesArray[i]);
+            saveGive(namesArray[i], path);
             break;
               }
      }
 }
 
-public void saveGive(String name){
+public void saveGive(String name, String path){
 FileHandler file = new FileHandler();
     for (Toy toy: listToys){
         if (toy.getName().equals(name)){
-            file.save(toy.getInfo(),"FileToys");
+            file.save(toy.getInfo(), path);
         }
     }
 }
@@ -112,6 +113,13 @@ public String getInfoToys(){
     }
     return sb.toString();
 }
+
+@Override
+public Iterator <Toy> iterator() {
+    return new ToyIterator(listToys);
+}
+
+
 }
 
 

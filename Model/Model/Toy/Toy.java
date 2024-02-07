@@ -1,5 +1,6 @@
-package Toys;
+package Model.Toy;
 import java.io.Serializable;
+
 
 public class Toy implements Serializable {
     

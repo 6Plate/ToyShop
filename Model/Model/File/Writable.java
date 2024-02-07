@@ -1,4 +1,4 @@
-package File;
+package Model.File;
 
 import java.io.Serializable;
 
