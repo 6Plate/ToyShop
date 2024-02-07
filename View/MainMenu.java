@@ -24,7 +24,7 @@ public class MainMenu {
 
 public String print(){
     StringBuilder stringBuilder= new StringBuilder();
-    stringBuilder.append("Список команд: \n");
+    stringBuilder.append("List of commands: \n");
     for(int i = 0; i < commandList.size(); i++){
         stringBuilder.append(i+1);
         stringBuilder.append(".");
